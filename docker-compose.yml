@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  api:
+    image: maven:3.8-openjdk-11-slim
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+      - ./mvnw:/app/mvnw
+      - ./pom.xml:/app/pom.xml
+      - ./.mvn:/app/.mvn
+    command: /bin/bash -c
+     "./mvnw clean package &&
+      java -jar /app/target/web-app-0.0.1-SNAPSHOT.jar"
+    ports:
+      - "9002:8080"
+
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - "54320:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
