@@ -1,3 +1,7 @@
 CREATE TABLE IF NOT EXISTS users (
-    document jsonb
+    id uuid PRIMARY KEY ,
+    email VARCHAR UNIQUE NOT NULL,
+    password VARCHAR NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL
 );
