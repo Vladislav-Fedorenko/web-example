@@ -1,11 +1,14 @@
 package tld.sld.webapp.core.entities
 
-data class UserEntity (
-    override val id: String,
-    override val createdAt: String,
-    override val updatedAt: String,
+import java.sql.Timestamp
+import java.util.*
 
-    var username: String = "",
+data class UserEntity (
+    override val id: UUID,
+    override val createdAt: Timestamp,
+    override val updatedAt: Timestamp,
+
+    var email: String = "",
     var password: String = "",
 ) : Entity {
     override fun toString(): String {
@@ -13,7 +16,7 @@ data class UserEntity (
             "id='$id'," +
             "createdAt='$createdAt'," +
             "updatedAt='$updatedAt'," +
-            "username='$username'," +
+            "email='$email'," +
             "password='$password'" +
          ")"
     }

@@ -3,12 +3,12 @@ package tld.sld.webapp.core.services
 import java.sql.Timestamp
 
 interface TimestampGetterService {
-    fun get(): String
+    fun get(): Timestamp
 }
 
 class TimestampGetterServiceImpl : TimestampGetterService {
-    override fun get(): String {
-        return Timestamp(System.currentTimeMillis()).toInstant().toString()
+    override fun get(): Timestamp {
+        return Timestamp(System.currentTimeMillis())
     }
 
 }

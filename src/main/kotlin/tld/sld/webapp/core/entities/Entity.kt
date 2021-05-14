@@ -1,7 +1,10 @@
 package tld.sld.webapp.core.entities
 
+import java.sql.Timestamp
+import java.util.*
+
 interface Entity {
-    val id: String
-    val createdAt: String
-    val updatedAt: String
+    val id: UUID
+    val createdAt: Timestamp
+    val updatedAt: Timestamp
 }

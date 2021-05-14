@@ -1,13 +1,13 @@
 package tld.sld.webapp.core.services
 
-import java.util.UUID
+import java.util.*
 
 interface UUIDGeneratorService {
-    fun generate(): String
+    fun generate(): UUID
 }
 
 class UUIDGeneratorServiceImpl : UUIDGeneratorService {
-    override fun generate(): String {
-        return UUID.randomUUID().toString()
+    override fun generate(): UUID {
+        return UUID.randomUUID()
     }
 }
