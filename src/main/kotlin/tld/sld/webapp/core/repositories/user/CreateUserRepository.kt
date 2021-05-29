@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import tld.sld.webapp.core.entities.UserEntity
 import tld.sld.webapp.core.repositories.RepositoryException
-import java.sql.SQLException
 
 interface CreateUserRepository {
     fun create(entity: UserEntity): Boolean
