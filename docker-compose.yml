@@ -9,10 +9,16 @@ services:
       - ./pom.xml:/app/pom.xml
       - ./.mvn:/app/.mvn
     command: /bin/bash -c
-     "./mvnw clean package &&
-      java -jar /app/target/web-app-0.0.1-SNAPSHOT.jar"
+      "./mvnw package &&
+      java -XX:MaxRAM=300M -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar /app/target/web-app-0.0.1-SNAPSHOT.jar"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      POSTGRES_DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      POSTGRES_DATABASE_USERNAME: postgres
+      POSTGRES_DATABASE_PASSWORD: postgres
     ports:
-      - "9002:8080"
+      - "9000:8080"
+      - "5005:5005"
 
   postgres:
     image: postgres:13-alpine
