@@ -1,6 +1,7 @@
 package tld.sld.webapp.core.services.auth
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.stereotype.Service
 import tld.sld.webapp.core.entities.UserEntity
 import tld.sld.webapp.core.repositories.RepositoryException
 import tld.sld.webapp.core.repositories.user.CreateUserRepository
@@ -13,6 +14,7 @@ interface SignUpService {
     fun signUp(form: SignUpForm): Boolean
 }
 
+@Service
 class SignUpServiceImpl(
     private val repository: CreateUserRepository,
     private val bCryptPasswordEncoder: BCryptPasswordEncoder,
@@ -26,12 +28,11 @@ class SignUpServiceImpl(
                 id = uuidGeneratorService.generate(),
                 createdAt = now,
                 updatedAt = now,
-                email = form.email!!,
+                email = form.email,
                 password = bCryptPasswordEncoder.encode(form.password)
             ))
         } catch (e: RepositoryException) {
             throw ServiceException("Failed to sign up user", e)
         }
     }
-
 }

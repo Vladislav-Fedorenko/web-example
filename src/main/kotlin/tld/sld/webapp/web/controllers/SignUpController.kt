@@ -24,7 +24,7 @@ class SignUpController(
         } catch (e: ServiceException) {
             return ResponseEntity(
                 BaseResponse(success = false, data = null, errorMessage = e.message, errors = mapOf("exception" to e.cause.toString())),
-                HttpStatus.OK
+                HttpStatus.UNPROCESSABLE_ENTITY
             )
         }
     }

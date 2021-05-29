@@ -8,8 +8,8 @@ data class UserEntity (
     override val createdAt: Timestamp,
     override val updatedAt: Timestamp,
 
-    var email: String = "",
-    var password: String = "",
+    val email: String,
+    val password: String,
 ) : Entity {
     override fun toString(): String {
         return "UserEntity(" +
