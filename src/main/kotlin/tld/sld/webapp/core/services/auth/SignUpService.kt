@@ -1,6 +1,6 @@
 package tld.sld.webapp.core.services.auth
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import tld.sld.webapp.core.entities.UserEntity
 import tld.sld.webapp.core.repositories.RepositoryException
@@ -17,7 +17,7 @@ interface SignUpService {
 @Service
 class SignUpServiceImpl(
     private val repository: CreateUserRepository,
-    private val bCryptPasswordEncoder: BCryptPasswordEncoder,
+    private val passwordEncoder: PasswordEncoder,
     private val uuidGeneratorService: UUIDGeneratorService,
     private val timestampGetterService: TimestampGetterService
 ) : SignUpService {
@@ -29,7 +29,7 @@ class SignUpServiceImpl(
                 createdAt = now,
                 updatedAt = now,
                 email = form.email,
-                password = bCryptPasswordEncoder.encode(form.password)
+                password = passwordEncoder.encode(form.password)
             ))
         } catch (e: RepositoryException) {
             throw ServiceException("Failed to sign up user", e)

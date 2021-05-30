@@ -1,4 +1,4 @@
-package tld.sld.webapp.core.config
+package tld.sld.webapp.config
 
 import org.flywaydb.core.Flyway
 import org.springframework.beans.factory.annotation.Qualifier

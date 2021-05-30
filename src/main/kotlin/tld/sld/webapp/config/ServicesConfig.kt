@@ -1,4 +1,4 @@
-package tld.sld.webapp.core.config
+package tld.sld.webapp.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

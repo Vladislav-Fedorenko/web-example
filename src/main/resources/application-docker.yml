@@ -5,3 +5,7 @@ spring:
       username: ${POSTGRES_DATABASE_USERNAME}
       password: ${POSTGRES_DATABASE_PASSWORD}
       driver-class-name: org.postgresql.Driver
+
+jwt:
+  signingKey: 'oix8Neiceo9aeth3eice'
+  aTokenDuration: 30

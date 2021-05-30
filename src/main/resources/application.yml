@@ -5,3 +5,7 @@ spring:
       username: postgres
       password: postgres
       driver-class-name: org.postgresql.Driver
+
+jwt:
+  signingKey: 'oix8Neiceo9aeth3eice'
+  aTokenDuration: 30
